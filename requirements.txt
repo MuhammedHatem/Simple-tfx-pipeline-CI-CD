@@ -1,4 +1,2 @@
 kfp==1.7.2
 tensorflow
-tfx
-tfx[kfp]<2
