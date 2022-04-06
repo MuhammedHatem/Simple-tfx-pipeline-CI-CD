@@ -1,4 +1,10 @@
 steps:
+  # Upgrade pip
+  - name: 'python'
+    entrypoint: 'python'
+    args: ['upgrade.py']
+    id: 'upgrade'
+    
   # Install dependencies
   - name: python
     entrypoint: pip
