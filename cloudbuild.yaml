@@ -1,0 +1,17 @@
+steps:
+  # Install dependencies
+  - name: python
+    entrypoint: pip
+    args: ["install", "-r", "requirements.txt", "--user"]
+
+  # Compile pipeline
+  - name: 'python'
+    entrypoint: 'python'
+    args: ['tfx-pipeline.py']
+    id: 'compile'
+
+  # Upload compiled pipeline to GCS.
+  - name: 'gcr.io/cloud-builders/gsutil'
+    args: ['cp', 'uct-bigquery_pipeline.json', 'gs://dt-ml-pipeline-bucket/Pipelines_json']
+    id:  'upload'
+    waitFor: ['compile']
