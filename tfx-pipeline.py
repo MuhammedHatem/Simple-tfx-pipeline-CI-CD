@@ -11,7 +11,7 @@ GOOGLE_CLOUD_PROJECT = 'dt-ml-pipeline'
 GOOGLE_CLOUD_PROJECT_NUMBER = '994103403822'  
 GOOGLE_CLOUD_REGION = 'us-central1'          
 GCS_BUCKET_NAME = 'dt-ml-pipeline-bucket' 
-trainer_module_file = 'penguin_trainer.py'
+_trainer_module_file = 'penguin_trainer.py'
 PIPELINE_NAME = 'ct-bigquery'
 
 # Path to various pipeline artifact.
@@ -84,7 +84,7 @@ _ = runner.run(
         pipeline_name=PIPELINE_NAME,
         pipeline_root=PIPELINE_ROOT,
         query=QUERY,
-        module_file=os.path.join(MODULE_ROOT, trainer_module_file),
+        module_file=os.path.join(MODULE_ROOT, _trainer_module_file),
         serving_model_dir=SERVING_MODEL_DIR,
         beam_pipeline_args=BIG_QUERY_WITH_DIRECT_RUNNER_BEAM_PIPELINE_ARGS))
 		
