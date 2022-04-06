@@ -12,7 +12,7 @@ GOOGLE_CLOUD_PROJECT_NUMBER = '994103403822'
 GOOGLE_CLOUD_REGION = 'us-central1'          
 GCS_BUCKET_NAME = 'dt-ml-pipeline-bucket' 
 _trainer_module_file = 'penguin_trainer.py'
-PIPELINE_NAME = 'ct-bigquery'
+PIPELINE_NAME = 'uct-bigquery'
 
 # Path to various pipeline artifact.
 PIPELINE_ROOT = 'gs://{}/pipeline_root/{}'.format(
