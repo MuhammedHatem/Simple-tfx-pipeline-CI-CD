@@ -1,5 +1,3 @@
-!pip install --upgrade pip
-!pip install --upgrade "tfx[kfp]<2"
 import tensorflow as tf
 from tfx import v1 as tfx
 import kfp
