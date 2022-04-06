@@ -2,15 +2,15 @@ steps:
   # Install dependencies
 
 
-  - name: python
+  - name: python:3.8
     entrypoint: pip
     args: ["install","--upgrade", "pip", "--user"] 
     
-  - name: python
+  - name: python:3.8
     entrypoint: pip
     args: ["install","--upgrade", "tfx[kfp]<2", "--user"] 
     
-  - name: python
+  - name: python:3.8
     entrypoint: pip
     args: ["install","-r", "requirements.txt", "--user"] 
 
