@@ -1,2 +1,2 @@
---upgrade pip
---upgrade "tfx[kfp]<2"
+pip
+"tfx[kfp]<2"
