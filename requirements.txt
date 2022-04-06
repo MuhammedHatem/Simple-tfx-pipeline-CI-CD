@@ -1,2 +1,1 @@
-pip install --upgrade pip
-pip install --upgrade "tfx[kfp]<2"
+tfx[kfp]<2
