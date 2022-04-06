@@ -1,5 +1,15 @@
 steps:
   # Install dependencies
+
+
+  - name: pythonUpgrade
+    entrypoint: pip
+    args: ["install","--upgrade", "pip", "--user"] 
+    
+   - name: pythonTFX
+    entrypoint: pip
+    args: ["install","--upgrade", "tfx[kfp]<2", "--user"] 
+    
   - name: python
     entrypoint: pip
     args: ["install","-r", "requirements.txt", "--user"] 
