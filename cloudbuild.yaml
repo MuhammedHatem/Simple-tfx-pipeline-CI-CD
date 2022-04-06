@@ -16,7 +16,7 @@ steps:
 
   
   # Compile pipeline
-  - name: 'python'
+  - name: 'python:3.8'
     entrypoint: 'python'
     args: ['tfx-pipeline.py']
     id: 'compile'
