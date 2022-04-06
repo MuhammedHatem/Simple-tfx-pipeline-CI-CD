@@ -26,3 +26,6 @@ steps:
     args: ['cp', 'uct-bigquery_pipeline.json', 'gs://dt-ml-pipeline-bucket/Pipelines_json']
     id:  'upload'
     waitFor: ['compile']
+    
+  options:
+  logging: CLOUD_LOGGING_ONLY
