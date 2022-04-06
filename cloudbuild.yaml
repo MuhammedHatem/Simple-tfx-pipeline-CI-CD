@@ -2,6 +2,10 @@ steps:
   # Install dependencies
   - name: python
     entrypoint: pip
+    args: ["install","-r", "upgrade.txt", "--user"]
+    
+  - name: python
+    entrypoint: pip-upgrade
     args: ["install","-r", "requirements.txt", "--user"]
   
   # Compile pipeline
