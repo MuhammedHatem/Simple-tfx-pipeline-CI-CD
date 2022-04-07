@@ -1,16 +1,16 @@
 steps:
   # Install dependencies
-  - name: python:3.8
+  - name: python:3.7
     entrypoint: pip
     args: ["install","--upgrade", "pip", "--user"] 
-  - name: python:3.8
+  - name: python:3.7
     entrypoint: pip
     args: ["install","--upgrade", "tfx[kfp]<2", "--user"] 
-  - name: python:3.8
+  - name: python:3.7
     entrypoint: pip
     args: ["install","-r", "requirements.txt", "--user"] 
   # Compile pipeline
-  - name: 'python:3.8'
+  - name: 'python:3.7'
     entrypoint: 'python'
     args: ['tfx-pipeline.py']
     id: 'compile'
