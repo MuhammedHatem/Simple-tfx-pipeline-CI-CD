@@ -12,11 +12,11 @@ steps:
   # Compile pipeline
   - name: 'python:3.7'
     entrypoint: 'python'
-    args: ['tfx-pipeline.py']
+    args: ['TFX_Pipeline.py']
     id: 'compile'
   # Upload compiled pipeline to GCS.
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'uct-bigquery_pipeline.json', 'gs://dt-ml-pipeline-bucket/Pipelines_json']
+    args: ['cp', 'my-tfx_pipeline.json', 'gs://dt-ml-pipeline-bucket/Pipelines_json']
     id:  'upload'
     waitFor: ['compile']  
 options:
