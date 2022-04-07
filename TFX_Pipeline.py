@@ -21,12 +21,13 @@ GOOGLE_CLOUD_PROJECT = 'dt-ml-pipeline'
 GOOGLE_CLOUD_PROJECT_NUMBER = '994103403822' 
 GOOGLE_CLOUD_REGION = 'us-central1'        
 GCS_BUCKET_NAME = 'dt-ml-pipeline-bucket' 
-UERY = "SELECT * FROM `dt-ml-pipeline.crime2021.chicago`"
+QUERY = "SELECT * FROM `dt-ml-pipeline.crime2021.chicago`"
 
 PIPELINE_NAME = 'my-tfx'
 
 ENDPOINT_NAME = 'prediction-' + PIPELINE_NAME
 
+module_file = 'Chicago_utils.py'
 # Path to various pipeline artifact.
 PIPELINE_ROOT = 'gs://{}/pipeline_root/{}'.format(
     GCS_BUCKET_NAME, PIPELINE_NAME)
@@ -65,7 +66,7 @@ def _create_pipeline(pipeline_name: str, pipeline_root: str, query: str,
   transform = tfx.components.Transform(
       examples=example_gen.outputs['examples'],
       schema=schema_gen.outputs['schema'],
-      module_file="gs://dt-ml-pipeline-bucket/pipeline_module/my-tfx-pipeline/Chicago_utils.py")
+      module_file=module_file)
    
    
   latest_model_resolver = resolver.Resolver(
@@ -75,7 +76,7 @@ def _create_pipeline(pipeline_name: str, pipeline_root: str, query: str,
   
   # Uses user-provided Python function that trains a model.
   trainer = tfx.components.Trainer(
-    module_file="gs://dt-ml-pipeline-bucket/pipeline_module/my-tfx-pipeline/Chicago_utils.py",
+    module_file=module_file,
     base_model=latest_model_resolver.outputs['latest_model'],
     examples=transform.outputs['transformed_examples'],
     transform_graph=transform.outputs['transform_graph'],
@@ -153,7 +154,7 @@ _ = runner.run(
         pipeline_name=PIPELINE_NAME,
         pipeline_root=PIPELINE_ROOT,
         query=QUERY,
-        module_file="gs://dt-ml-pipeline-bucket/pipeline_module/my-tfx-pipeline/Chicago_utils.py",
+        module_file=os.path.join(MODULE_ROOT,module_file),
         #os.path.join(MODULE_ROOT,module_file),
         serving_model_dir=SERVING_MODEL_DIR,
         beam_pipeline_args=BIG_QUERY_WITH_DIRECT_RUNNER_BEAM_PIPELINE_ARGS))
